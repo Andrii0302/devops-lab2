@@ -1,6 +1,8 @@
 AUTOMAKE_OPTIONS = foreign
 bin_PROGRAMS = funca
+check_PROGRAMS = test_funca
+test_func_a_SOURCES = unittest.cpp FuncA.cpp FuncA.h
+
+TESTS = test_funca
 funca_SOURCES = main.cpp FuncA.cpp FuncA.h
 EXTRA_DIST = Makefile.am
-CXX = g++
-CXXFLAGS = -Wall -std=c++11
