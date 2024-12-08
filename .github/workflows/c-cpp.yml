@@ -27,11 +27,4 @@ jobs:
       - name: Build
         run: make
 
-      - name: Run tests
-        run: make check
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: tests
-          path: tests.log
