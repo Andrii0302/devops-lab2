@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: funca-deb
-          path: /home/runner/work/Devops2/funca_*.deb
+          path: /home/runner/work/devops-lab2/funca_*.deb
