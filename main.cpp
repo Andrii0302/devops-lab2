@@ -1,6 +1,6 @@
 #include <iostream>
 #include "FuncA.h"
-
+int CreateHTTPserver();
 int main() {
     // Create an instance of FuncA
     FuncA myFunc;
@@ -18,7 +18,7 @@ int main() {
     // Call the calculate function and output the result
     double result = myFunc.calculate(x, terms);
     std::cout << "The result of the series expansion for sqrt(1 + " << x << ") is: " << result << std::endl;
-
+    CreateHTTPserver();
     return 0;
 }
 
