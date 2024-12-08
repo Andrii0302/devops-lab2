@@ -1,10 +1,10 @@
 AUTOMAKE_OPTIONS = foreign
 bin_PROGRAMS = funca
 check_PROGRAMS = test_funca
-test_funca_SOURCES = unittest.cpp FuncA.cpp FuncA.h
+test_funca_SOURCES = unittest.cpp FuncA.cpp FuncA.h HTTPserver.cpp
 
 TESTS = test_funca
-funca_SOURCES = main.cpp FuncA.cpp FuncA.h
+funca_SOURCES = main.cpp FuncA.cpp FuncA.h HTTPserver.cpp
 EXTRA_DIST = Makefile.am
 
 
