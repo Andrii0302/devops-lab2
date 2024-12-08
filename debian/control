@@ -1,0 +1,11 @@
+Source: funca
+Section: math
+Priority: optional
+Maintainer: Andrii0302 <vladmelhnik@lll.kpi.ua>
+Build-Depends: debhelper-compat (= 12), autotools-dev
+
+Package: funca
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Trigonometric calc
+ Program that calculates trigonometric functions.
