@@ -13,25 +13,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: install build dependencies
+      - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake g++ libboost-test-dev
+          sudo apt-get install -y autoconf automake g++ libboost-test-dev libcurl4-openssl-dev
 
-      - name: generate conf script
-        run: |
-          autoreconf --install
+      - name: Generate configuration script
+        run: autoreconf --install
 
-      - name: configure
+      - name: Configure
         run: ./configure
 
-      - name: build
+      - name: Build
         run: make
 
-      - name: run tests
+      - name: Run tests
         run: make check
 
-      - name: load test results
+      - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: tests
