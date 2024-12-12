@@ -21,10 +21,34 @@ jobs:
       - name: Generate configuration script
         run: autoreconf --install
 
+      - name: installing qemu
+        uses: docker/setup-qemu-action@v3
+
+      - name: installing Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
       - name: Configure
         run: ./configure
 
       - name: Build
         run: make
+
+      - name: buildx ls
+        run: docker buildx ls
+
+      - name: Logging in into Dockerhub
+        run: docker login -u ${{ vars.docker_username }} -p ${{ secrets.docker_passkey }}
+
+      - name: building image for amd64
+        run: docker build --platform=linux/amd64 -t andrii0302/lab_4diduk:amd64 --push .
+
+      - name: building image for arm64
+        run: docker build --platform=linux/arm64 -t andrii0302/lab_4diduk:arm64 --push .
+
+      - name: creating manifest
+        run: docker manifest create andrii0302/lab_4diduk --amend andrii0302/lab_4diduk:amd64 --amend andrii0302/lab_4diduk:arm64
+
+      - name: pushing manifest to Dockerhub
+        run: docker manifest push andrii0302/lab_4diduk
 
 
