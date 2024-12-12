@@ -1,11 +1,17 @@
-FROM alpine
+FROM alpine:latest AS build
+
+RUN apk add --no-cache build-base automake autoconf
 
 WORKDIR /home/optima
 
-COPY  ./HTTPserver .
+COPY ./HTTPserver .
 
-RUN apk add libstdc++
+RUN ./configure
 
-RUN apk add libc6-compat
+RUN make
 
-ENTRYPOINT ["./HTTPserver"]
+FROM alpine:latest
+
+COPY --from=build /home/optima/funca /usr/local/bin/funca
+
+ENTRYPOINT ["/usr/local/bin/funca"]
